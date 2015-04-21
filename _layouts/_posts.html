@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+<h1>
+  {{ page.title }}
+  {% if page.subtitle %} <small>{{ page.subtitle }}</small> {% endif %}
+</h1>
+<small>{{ page.date }} - {{ page.author }}</small>
+
+{{ content }}

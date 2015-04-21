@@ -1,0 +1,17 @@
+permalink: /posts/:year/:month/:day/:title/
+paginate: 5
+paginate_path: /archive/page-:num/
+sass:
+  style: :compressed
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+  - scope:
+      path: posts
+    values:
+      layout: posts
+      author: Chris Hall
