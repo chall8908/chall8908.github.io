@@ -6,6 +6,7 @@ layout: default
   {{ page.title }}
   {% if page.subtitle %} <small>{{ page.subtitle }}</small> {% endif %}
 </h1>
-<small>{{ page.date }} - {{ page.author }}</small>
 
 {{ content }}
+
+<p><small>{{ page.date | date_to_string }} - {{ page.author }}</small></p>
