@@ -3,13 +3,23 @@
 
 $header-fonts: Ubuntu, Century Gothic, CenturyGothic, AppleGothic, sans-serif;
 $body-fonts:   Raleway, ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
-$dark:         hsla(200, 75%, 1%, 1);
-$light:        desaturate(lighten($dark, 75%), 75%);
+
+$text-color:           fade-out(#000, 0.13);
+$secondary-text-color: fade-out(#000, 0.46);
+
+$bar-text-color:   fade-out(#FFF, 0.3);
+$bar-text-hint:    fade-out(#FFF, 0.7);
+$bar-text-divider: fade-out(#FFF, 0.88);
+
+$color-50:  #ECEFF1;
+$color-700: #455A64;
+$color-900: #263238;
+
+$color-accent: #304FFE;
 
 body {
-  background: $dark;
+  background: $color-900;
 
-  color: $light;
   font: 110% $body-fonts;
 }
 
@@ -17,16 +27,16 @@ h1, h2, h3, h4, h5 {
   font-family: $header-fonts;
 }
 
-h1 {  
-  border-bottom: 2px solid fade-out($light, 0.9);
-}
-
-h2 {
-  border-bottom: 1px solid fade-out($light, 0.9);
+h1 > small {
+  display: block;
+  color: $secondary-text-color;
+  font-size: 75%;
+  font-weight: normal;
+  font-style: italic;
 }
 
 a:link, a:visited {
-  color: lighten($dark, 15%);
+  color: $text-color;
 }
 
 .container {
@@ -45,13 +55,17 @@ a:link, a:visited {
 #main-content {
   position: relative;
 
-  background-color: $light;
+  background-color: $color-50;
 
   min-height: 100vh;
   padding-top: 60px;
   padding-bottom: 60px;
 
-  color: $dark;
+  text-align: justify;
+
+  color: $text-color;
+
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,0.5);
 }
 
 #footer {
@@ -60,26 +74,29 @@ a:link, a:visited {
   left: 0;
   right: 0;
 
-  background: lighten($dark, 10%);
+  background: $color-700;
 
   padding: 5px;
 
-  color: lighten($dark, 20%);
+  color: $bar-text-color;
   text-align: right;
+
+  box-shadow: 0 3px 3px 1px rgba(0,0,0,0.5);
 }
 
 .navbar {
 
   .container {
-    background: lighten($dark, 10%);
+    background: $color-700;
 
     padding-top: 0;
     height: 50px;
     padding-bottom: 0;
 
-    color: lighten($dark, 20%);
+    color: $bar-text-color;
     font-variant: small-caps;
-    /* height: 100%; */
+
+    box-shadow: 0 3px 3px 1px rgba(0,0,0,0.5);
   }
 
   .brand {
@@ -93,25 +110,24 @@ a:link, a:visited {
     font-size: 2.5em;
     float: right;
     cursor: default;
+    color: $bar-text-hint;
   }
 
   a {
     display: inline-block;
     height: 100%;
     padding: 10px 10px 0 5px;
-    border-right: 1px solid lighten($dark, 15%);
+    border-right: 1px solid $bar-text-divider;
 
     box-sizing: border-box;
 
     font-size: 1.5em;
     text-decoration: none;
 
-    &:link, &:visited {
-      color: lighten($dark, 30%);
-    }
 
-    &:hover {
-      color: lighten($dark, 40%);
+
+    &:link, &:visited {
+      color: $bar-text-color;
     }
 
     &:last-child {
@@ -131,12 +147,12 @@ img.about {
 
 p.about-links {
   text-align: center;
- 
+
   a {
     display: inline-block;
     margin-right: 15px;
     text-decoration: none;
-  } 
+  }
 }
 
 @media(min-width: 720px) {
@@ -149,11 +165,5 @@ p.about-links {
     /* padding: 0; */
     width: 700px;
     margin: 0 auto;
-  }
-}
-
-@media(min-width: 1200px ) {
-  .container {
-    width: 1100px;
   }
 }
