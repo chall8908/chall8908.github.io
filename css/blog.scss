@@ -1,11 +1,13 @@
 ---
 ---
 
-$header-fonts: Ubuntu, Century Gothic, CenturyGothic, AppleGothic, sans-serif;
-$body-fonts:   Raleway, ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+/* $header-fonts: Ubuntu, Century Gothic, CenturyGothic, AppleGothic, sans-serif; */
+/* $body-fonts:   Raleway, ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif; */
 
-$text-color:           fade-out(#000, 0.13);
-$secondary-text-color: fade-out(#000, 0.46);
+$text-color:           #FFF;
+$secondary-text-color: fade-out($text-color, 0.3);
+
+$background-color:     #222;
 
 $bar-text-color:   fade-out(#FFF, 0.3);
 $bar-text-hint:    fade-out(#FFF, 0.7);
@@ -18,13 +20,31 @@ $color-900: #263238;
 $color-accent: #304FFE;
 
 body {
-  background: $color-900;
+  background: $background-color;
 
-  font: 110% $body-fonts;
+  padding: 30px 15px 45px;
+
+  font: 110% Monospace;
+
+  color: $text-color;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: $header-fonts;
+  font-size: 100%;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 1em 0;
+}
+
+// Add some markdown stuff before headers to denote them
+$before-header: '#';
+@for $i from 1 through 6 {
+  h#{$i}:before {
+    content: $before-header + ' ';
+  }
+
+  $before-header: '#' + $before-header;
 }
 
 h1 > small {
@@ -45,89 +65,105 @@ a:link, a:visited {
   box-sizing: border-box;
 }
 
+.keyword {
+  color: #B87AB4;
+}
+
+.identifier {
+  color: #1AA4A6;
+}
+
 #primary-navigation {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 10;
 }
 
 #main-content {
   position: relative;
+  color: $secondary-text-color;
 
-  background-color: $color-50;
+  padding-left: 46px;
 
-  min-height: 100vh;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  &:before {
+    position: absolute;
+    left: 16px;
+    content: '/*'
+  }
 
-  text-align: justify;
+  &:after {
+    display: block;
 
-  color: $text-color;
+    margin-left: -21px;
+    content: '*/'
+  }
 
-  box-shadow: 0 1px 3px 1px rgba(0,0,0,0.5);
+  :first-child {
+    margin-top: 0;
+  }
 }
 
 #footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
 
-  background: $color-700;
+  background: $background-color;
 
-  padding: 5px;
+  /* padding: 5px; */
 
   color: $bar-text-color;
-  text-align: right;
+}
 
-  box-shadow: 0 3px 3px 1px rgba(0,0,0,0.5);
+#foot-bar {
+  background: #666;
+
+  width: 100%;
+  margin-bottom: 1.2em;
+
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+    height: 0;
+    width: 0;
+  }
+}
+
+#copyright {
+  float: right;
 }
 
 .navbar {
+  background: #FFF;
 
-  .container {
-    background: $color-700;
+  padding: 3px 13px 0px 3px;
 
-    padding-top: 0;
-    height: 50px;
-    padding-bottom: 0;
-
-    color: $bar-text-color;
-    font-variant: small-caps;
-
-    box-shadow: 0 3px 3px 1px rgba(0,0,0,0.5);
-  }
-
-  .brand {
-    padding: 10px 15px 0 0;
-  }
+  font-size: 0.9em;
+  color: #000;
 
   .theta-symbol {
     display: inline-block;
     height: 100%;
-    margin-right: -10px;
-    font-size: 2.5em;
+    /* margin-right: -10px; */
     float: right;
-    cursor: default;
-    color: $bar-text-hint;
   }
 
   a {
     display: inline-block;
     height: 100%;
-    padding: 10px 10px 0 5px;
     border-right: 1px solid $bar-text-divider;
 
     box-sizing: border-box;
 
-    font-size: 1.5em;
+    color: #000;
     text-decoration: none;
 
-
-
-    &:link, &:visited {
-      color: $bar-text-color;
+    &:hover:first-letter {
+      text-decoration: underline;
     }
 
     &:last-child {
@@ -164,6 +200,6 @@ p.about-links {
   .container {
     /* padding: 0; */
     width: 700px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
   }
 }

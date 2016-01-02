@@ -6,14 +6,17 @@
   {% include head.html %}
 
   <body>
+    {% include navigation.html %}
+    <span class="keyword">function</span> <span class="identifier">showPage</span>() {
 
     <section id="main-content" class="container">
-      {% include navigation.html %}
-
       {{ content }}
-
-      {% include footer.html %}
     </section>
+
+    }
+
+    {% include footer.html %}
+    <script src="/javascript/site.js"></script>
   </body>
 
 </html>
